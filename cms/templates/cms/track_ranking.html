@@ -1,0 +1,34 @@
+{% extends "cms/../base.html" %}
+
+{% block title %}RANKING{% endblock title %}
+
+{% block extrahead %}
+<style>
+table {
+  margin-top: 8px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-header">すげー頑張っている人とっぷふぁいぶを並べてみたよ
+    <br>あれ？君の名前はある？</h3>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>順位</th>
+          <th>ユーザー名</th>
+          <th>総走行距離</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ forloop.counter }}位</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.distance }} km</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}

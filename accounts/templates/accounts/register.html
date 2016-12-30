@@ -1,0 +1,18 @@
+{% extends "accounts/base.html" %}
+{% load bootstrap %}
+
+{% block title %}REGISTRATION{% endblock title %}
+
+{% block content %}
+    <h3 class="page-header">あなたの個人情報を入力する画面だよ
+        <br>周りに人がいないことを確認してから慎重に入力してね</h3>
+    <form action="{% url 'accounts:user_add' %}" method="post" class="form-horizontal" role="form">
+      {% csrf_token %}
+      {{ form|bootstrap_horizontal }}
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary">ユーザー登録</button>
+        </div>
+      </div>
+    </form>
+{% endblock content %}

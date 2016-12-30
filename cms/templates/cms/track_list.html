@@ -1,0 +1,52 @@
+{% extends "cms/../base.html" %}
+
+{% block title %}TRACK LIST FOR ALL{% endblock title %}
+
+{% block extrahead %}
+<style>
+table {
+  margin-top: 8px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+    <h3 class="page-header">今までみんなで走ってきた分が見れるページだよ
+    <br>このままで目標達成できるのか心配だなぁ</h3>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>合計距離</th>
+          <th>目標</th>
+          <th>残り</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ sum_distance }} km</td>
+          <td>{{ '2017' }} km</td>
+          <td>{{ left }} km</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a href="{% url 'cms:track_add' %}" class="btn btn-default btn-sm">追加</a>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>ユーザー名</th>
+          <th>走行距離</th>
+          <th>日付</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for track in tracks %}
+        <tr>
+          <td>{{ track.user }}</td>
+          <td>{{ track.distance }} km</td>
+          <td>{{ track.date }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}

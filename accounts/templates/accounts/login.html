@@ -1,0 +1,24 @@
+{% extends "accounts/base.html" %}
+{% load bootstrap %}
+
+{% block title %}LOGIN{% endblock title %}
+
+{% block content %}
+    <h3 class="page-header">入力してくれた個人情報をもう一回入力するめんどくさい画面だよ
+        <br>忍耐しながら今回も慎重に入力してね</h3>
+
+    {% if form.errors %}
+        <p>あれ？もう忘れちゃったかな？</p>
+    {% endif %}
+
+    <form action="{% url 'django.contrib.auth.views.login' %}" method="post" class="form-horizontal" role="form">
+        {% csrf_token %}
+        {{ form|bootstrap_horizontal }}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">ログイン</button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
