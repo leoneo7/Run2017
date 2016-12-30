@@ -136,10 +136,5 @@ STATICFILES_DIRS = (
 LOGIN_REDIRECT_URL = '/cms/track'
 FORMAT_MODULE_PATH = 'run2017.formats'
 
-if 'ryouken' in hostname:
-    DEBUG = True
-    TEMPLATE_DEBUG = True
-else:
-    DEBUG = False
-    TEMPLATE_DEBUG = False
-    ALLOWED_HOSTS = ['*']
+DEBUG = (os.environ.get('PRODUCTION') != 'True')
+TEMPLATE_DEBUG = (os.environ.get('PRODUCTION') != 'True')
