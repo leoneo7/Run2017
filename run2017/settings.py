@@ -141,3 +141,4 @@ FORMAT_MODULE_PATH = 'run2017.formats'
 
 DEBUG = (os.environ.get('PRODUCTION') != 'True')
 TEMPLATE_DEBUG = (os.environ.get('PRODUCTION') != 'True')
+ALLOWED_HOSTS = ['*']
